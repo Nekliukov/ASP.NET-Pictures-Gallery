@@ -8,8 +8,14 @@
     <div class="container">
     @{
         int i = 1;
+
         foreach (var picture in Model)
         {
+            if (!picture.PicturePath.Contains("wide"))
+            {
+                continue;
+            }
+
             <div class="mySlides">
                 <div class="numbertext">@i / 6</div>
                 <img src="@Html.DisplayFor(modelItem => picture.PicturePath)" style="width: 100%">
@@ -36,6 +42,11 @@
                 int num = 1;
                 foreach (var picture in Model)
                 {
+                    if (!picture.PicturePath.Contains("thumbnails"))
+                    {
+                        continue;
+                    }
+
                     <div class="column">
                         <img class="demo cursor" src="@Html.DisplayFor(modelItem => picture.PicturePath)"
                              style="width: 100%" onclick="currentSlide(@num)"

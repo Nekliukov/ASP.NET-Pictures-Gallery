@@ -15,7 +15,11 @@ namespace PicturesGallery.Controllers
         private PicturesStoreEntities db = new PicturesStoreEntities();
 
         // GET: Home
-        public ActionResult Index() => View(db.PicturesTable.ToList());
+        public ActionResult Index()
+        {
+            var sd = db.PicturesTable.ToList();
+            return View(sd);
+        }
 
         protected override void Dispose(bool disposing)
         {
